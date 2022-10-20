@@ -2,13 +2,12 @@
 #include <limits.h>
 #include <stdio.h>
 /**
- * _printf - produces output according to a format
- * @format: format string containing the characters and the specifiers
- * Description: this function will call the get_print() function that will
- * determine which printing function to call depending on the conversion
- * specifiers contained into fmt
+ * _printf - formatted output conversion and print data.
+ * @format: input string.
+ *
  * Return: length of the formatted output string
  */
+
 int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, buff_count = 0, prev_buff_count = 0;
