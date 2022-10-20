@@ -10,6 +10,42 @@
 
 int _printf(const char *format, ...)
 {
+<<<<<<< HEAD
+	int (*pfunc)(va_list, flags_t *);
+	const char *p;
+	va_list arguments;
+	flags_t flags = {0, 0, 0};
+
+	register int count = 0;
+
+	va_start(arguments, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = format; *p; p++)
+	{
+		if (*p == '%')
+		{
+			p++;
+			if (*p == '%')
+			{
+				count += _putchar('%');
+				continue;
+			}
+			while (get_flag(*p, &flags))
+				p++;
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(arguments, &flags)
+				: _printf("%%%c", *p);
+		} else
+			count += _putchar(*p);
+	}
+	_putchar(-1);
+	va_end(arguments);
+	return (count);
+=======
 	int i = 0, j = 0, buff_count = 0, prev_buff_count = 0;
 	char buffer[2000];
 	va_list arg;
@@ -49,4 +85,5 @@ int _printf(const char *format, ...)
 	buffer[buff_count] = '\0';
 	print_buff(buffer, buff_count);
 	return (buff_count);
+>>>>>>> 1ffcdcaaa08e8678686ea88bb2fccdfd603cd080
 }
